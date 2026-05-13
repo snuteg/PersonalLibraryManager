@@ -8,6 +8,14 @@ public class BookService {
         this.repository = repository;
     }
 
+    public void load() {
+        repository.loadFromFile();
+    }
+
+    public void save() {
+        repository.saveToFile();
+    }
+
     public void add(Book book) {
         repository.save(book);
     }
