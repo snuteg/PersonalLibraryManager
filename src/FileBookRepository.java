@@ -29,26 +29,6 @@ public class FileBookRepository implements BookRepository {
         return books;
     }
 
-    @Override
-    public Book findByReleaseDate(int releaseDate) {
-        for (Book book : books) {
-            if (book.getReleaseDate() == releaseDate) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Book findByRating(double rating) {
-        for (Book book : books) {
-            if (book.getRating() == rating) {
-                return book;
-            }
-        }
-        return null;
-    }
-
     public void setBooks(List<Book> loadedBooks) {
         books.clear();
         books.addAll(loadedBooks);
