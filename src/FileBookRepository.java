@@ -65,14 +65,14 @@ public class FileBookRepository implements BookRepository {
 
     @Override
     public void saveToFile() {
-        StringBuilder lines = new StringBuilder();
+        List<String> lines = new ArrayList<>();
 
         for (Book book : books) {
-            lines.append(book.forFileString());
+            lines.add(book.forFileString());
         }
 
         try {
-            Files.writeString(Path.of(filename), lines);
+            Files.write(Path.of(filename), lines);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
