@@ -78,7 +78,7 @@ public class BookService {
         }
 
         for (Book book : repository.findAll()) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
                 System.out.println(book);
             }
         }
@@ -91,7 +91,7 @@ public class BookService {
         }
 
         for (Book book : repository.findAll()) {
-            if (book.getAuthor().equals(author)) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
                 System.out.println(book);
             }
         }
@@ -104,7 +104,7 @@ public class BookService {
         }
 
         for (Book book : repository.findAll()) {
-            if (book.getGenre().equals(genre)) {
+            if (book.getGenre().equalsIgnoreCase(genre)) {
                 System.out.println(book);
             }
         }
