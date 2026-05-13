@@ -110,6 +110,24 @@ public class BookService {
         }
     }
 
+    public Book findByReleaseDate(int releaseDate) {
+        for (Book book : repository.findAll()) {
+            if (book.getReleaseDate() == releaseDate) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public Book findByRating(double rating) {
+        for (Book book : repository.findAll()) {
+            if (book.getRating() == rating) {
+                return book;
+            }
+        }
+        return null;
+    }
+
     public void sortByTitle() {
         if (repository.findAll().isEmpty()) {
             System.out.println("Список книг пуст");
