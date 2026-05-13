@@ -30,16 +30,6 @@ public class FileBookRepository implements BookRepository {
     }
 
     @Override
-    public Book findById(int id) {
-        for (Book book : books) {
-            if (book.getId() == id) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    @Override
     public Book findByReleaseDate(int releaseDate) {
         for (Book book : books) {
             if (book.getReleaseDate() == releaseDate) {
