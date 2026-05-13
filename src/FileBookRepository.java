@@ -40,26 +40,6 @@ public class FileBookRepository implements BookRepository {
     }
 
     @Override
-    public Book findByTitle(String title) {
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Book findByAuthor(String author) {
-        for (Book book : books) {
-            if (book.getAuthor().equals(author)) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    @Override
     public Book findByReleaseDate(int releaseDate) {
         for (Book book : books) {
             if (book.getReleaseDate() == releaseDate) {
@@ -79,19 +59,9 @@ public class FileBookRepository implements BookRepository {
         return null;
     }
 
-    @Override
-    public Book findByGenre(String genre) {
-        for (Book book : books) {
-            if (book.getGenre().equals(genre)) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    public void setBooks(List<Book> newBooks) {
+    public void setBooks(List<Book> loadedBooks) {
         books.clear();
-        books.addAll(newBooks);
+        books.addAll(loadedBooks);
 
         int maxId = 0;
         for (Book book : books) {
@@ -121,7 +91,7 @@ public class FileBookRepository implements BookRepository {
     @Override
     public void loadFromFile() {
         Book book;
-        List<Book> newBooks = new ArrayList<>();
+        List<Book> loadedBooks = new ArrayList<>();
 
         try {
             String lines = Files.readString(Path.of(filename));
@@ -136,12 +106,12 @@ public class FileBookRepository implements BookRepository {
                 BookStatus status = BookStatus.valueOf(splitParts[4]);
                 double rating = Double.parseDouble(splitParts[5]);
                 book = new Book(title, author, releaseDate, genre, status, rating);
-                newBooks.add(book);
+                loadedBooks.add(book);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        setBooks(newBooks);
+        setBooks(loadedBooks);
     }
 }
