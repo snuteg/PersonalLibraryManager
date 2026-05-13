@@ -29,12 +29,13 @@ public class Book implements Comparable<Book> {
     public int getId() {return id;}
 
     public String forFileString() {
-        return title + ";" + author + ";" + releaseDate + ";" + genre + ";" + status + ";" + rating;
+        return id + ";" + title + ";" + author + ";" + releaseDate + ";" + genre + ";" + status + ";" + rating;
     }
 
     @Override
     public String toString() {
-        return "Book title: " + title
+        return "ID: " + id
+                + ". Book title: " + title
                 + " | Author: " + author
                 + " | Release Date: " + releaseDate
                 + " | Genre: " + genre
