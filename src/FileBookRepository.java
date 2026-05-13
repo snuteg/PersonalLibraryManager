@@ -80,6 +80,11 @@ public class FileBookRepository implements BookRepository {
 
     @Override
     public void loadFromFile() {
+        if (!Files.exists(Path.of(filename))) {
+            System.out.println("Файл не существует.");
+            return;
+        }
+
         Book book;
         List<Book> loadedBooks = new ArrayList<>();
 
