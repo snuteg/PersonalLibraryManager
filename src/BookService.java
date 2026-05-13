@@ -142,7 +142,7 @@ public class BookService {
             return;
         }
 
-        repository.findAll().sort(Comparator.comparing(Book::getRating));
+        repository.findAll().sort(Comparator.comparing(Book::getRating).reversed());
 
         for (Book book : repository.findAll()) {
             System.out.println(book);
