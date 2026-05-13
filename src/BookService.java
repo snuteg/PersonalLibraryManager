@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class BookService {
     private FileBookRepository repository;
@@ -59,6 +60,15 @@ public class BookService {
                 System.out.println(book);
             }
         }
+    }
+
+    public Book findById(int id) {
+        for (Book book : repository.findAll()) {
+            if (book.getId() == id) {
+                return book;
+            }
+        }
+        return null;
     }
 
     public void findByTitle(String title) {
@@ -137,5 +147,9 @@ public class BookService {
         for (Book book : repository.findAll()) {
             System.out.println(book);
         }
+    }
+
+    public List<Book> getAllBooks() {
+        return repository.findAll();
     }
 }
