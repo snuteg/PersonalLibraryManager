@@ -99,13 +99,14 @@ public class FileBookRepository implements BookRepository {
 
             for (String part : parts) {
                 String[] splitParts = part.split(";");
-                String title = splitParts[0];
-                String author = splitParts[1];
-                int releaseDate = Integer.parseInt(splitParts[2]);
-                String genre = splitParts[3];
-                BookStatus status = BookStatus.valueOf(splitParts[4]);
-                double rating = Double.parseDouble(splitParts[5]);
+                String title = splitParts[1];
+                String author = splitParts[2];
+                int releaseDate = Integer.parseInt(splitParts[3]);
+                String genre = splitParts[4];
+                BookStatus status = BookStatus.valueOf(splitParts[5]);
+                double rating = Double.parseDouble(splitParts[6]);
                 book = new Book(title, author, releaseDate, genre, status, rating);
+                book.setId(Integer.parseInt(splitParts[0]));
                 loadedBooks.add(book);
             }
         } catch (IOException e) {
